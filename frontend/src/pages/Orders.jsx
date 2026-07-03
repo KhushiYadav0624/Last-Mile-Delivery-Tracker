@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import DashboardLayout from "../layouts/DashboardLayout";
-import axios from "axios";
-
+import api from "../services/api";
 function Orders() {
   const [orders, setOrders] = useState([]);
 
@@ -11,7 +10,7 @@ function Orders() {
 
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/orders");
+      const res = await api.get("/orders");
       setOrders(res.data);
     } catch (err) {
       console.log(err);

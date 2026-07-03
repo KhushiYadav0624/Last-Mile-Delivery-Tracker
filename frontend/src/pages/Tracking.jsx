@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DashboardLayout from "../layouts/DashboardLayout";
-import axios from "axios";
-
+import api from "../services/api";
 function Tracking() {
   const { orderId } = useParams();
   const [history, setHistory] = useState([]);
@@ -12,9 +11,7 @@ function Tracking() {
 
   const fetchTracking = async () => {
     try {
-      const res = await axios.get(
-        `http://localhost:5000/api/orders/tracking/${orderId}`
-      );
+      const res = await api.get("/orders");
       setHistory(res.data);
     } catch (err) {
       console.log(err);

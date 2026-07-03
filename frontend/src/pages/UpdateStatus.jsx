@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../services/api";
 import DashboardLayout from "../layouts/DashboardLayout";
 
 function UpdateStatus() {
@@ -20,10 +20,7 @@ function UpdateStatus() {
     e.preventDefault();
 
     try {
-      await axios.put(
-        "http://localhost:5000/api/orders/status",
-        formData
-      );
+      await api.put("/orders/status");
 
       alert("Order Status Updated");
 

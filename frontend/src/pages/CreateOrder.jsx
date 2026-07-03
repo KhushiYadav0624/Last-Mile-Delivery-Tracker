@@ -1,7 +1,6 @@
 import { useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
-import axios from "axios";
-
+import api from "../services/api";
 function CreateOrder() {
   const [formData, setFormData] = useState({
     customer: "",
@@ -25,10 +24,7 @@ function CreateOrder() {
     e.preventDefault();
 
     try {
-      await axios.post(
-        "http://localhost:5000/api/orders",
-        formData
-      );
+      await api.post("/orders");
 
       alert("Order Created Successfully");
 

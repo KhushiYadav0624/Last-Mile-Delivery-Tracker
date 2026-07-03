@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
-import axios from "axios";
-
+import api from "../services/api";
 function Agents() {
   const [agents, setAgents] = useState([]);
 
@@ -9,7 +8,7 @@ function Agents() {
     
   const fetchAgents = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/agents");
+      const res = await api.get("/orders");
       setAgents(res.data);
     } catch (err) {
       console.log(err);

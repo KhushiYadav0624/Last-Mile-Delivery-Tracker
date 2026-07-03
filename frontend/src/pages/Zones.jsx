@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
-import axios from "axios";
-
+import api from "../services/api";
 function Zones() {
   const [zones, setZones] = useState([]);
 
@@ -10,7 +9,7 @@ function Zones() {
 
   const fetchZones = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/zones");
+      const res = await api.get("/orders");
       setZones(res.data);
     } catch (err) {
       console.log(err);

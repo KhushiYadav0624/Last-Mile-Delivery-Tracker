@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import DashboardLayout from "../layouts/DashboardLayout";
-import axios from "axios";
-
+import api from "../services/api";
 function RateCards() {
   const [rates, setRates] = useState([]);
 
@@ -10,7 +9,7 @@ function RateCards() {
 
   const fetchRates = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/ratecards");
+      const res = await api.get("/orders");
       setRates(res.data);
     } catch (err) {
       console.log(err);
